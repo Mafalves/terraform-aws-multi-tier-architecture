@@ -1,30 +1,32 @@
 variable "vpc_id" {
   description = "VCP ID"
-  type = string
+  type        = string
 }
 
 variable "security_group" {
-  description = "Name of the private security group"
-  type = string
+  type = map(object({
+    name        = string
+    description = string
+  }))
 }
 
-variable "cidr_ipv4" {
-  description = "IPv4 CIDR used by security group"
-  type = string
+variable "ingress_rules" {
+  type = map(object({
+    cidr_blocks = string
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    sg_name = string
+  }))
 }
 
-variable "ip_protocol" {
-  description = "Protocol used by security group"
-  type = string
-}
-
-variable "port_origin" {
-  description = "Origin port associated with the group"
-  type = number
-}
-
-variable "port_destination" {
-  description = "Destination port associated with the group"
-  type = number
+variable "egress_rules" {
+  type = map(object({
+    cidr_blocks = string
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    sg_name = string
+  }))
 }
 

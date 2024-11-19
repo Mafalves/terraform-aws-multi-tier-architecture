@@ -1,14 +1,12 @@
-output "public_sg_id" {
+# output "security_group_id" {
+#   description = "The public security group ID"
+#   value       = aws_security_group.public.id
+# }
+
+
+output "public_subnet_id" {
   description = "The public security group ID"
-  value = aws_security_group.public.id  
-}
-
-output "private_sg_id" {
-  description = "The private security group ID"
-  value = aws_security_group.private.id  
-}
-
-output "data_sg_id" {
-  description = "The data security group ID"
-  value = aws_security_group.data.id
+  value = {
+    for k, v in aws_security_group.this : k => v.id
+  }
 }
