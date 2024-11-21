@@ -1,3 +1,4 @@
+# VALUES FOR THE VARIABLES IN THE VPC MODULE
 
 variable "vpc_cidr" {
   default = "10.15.0.0/16"
@@ -26,6 +27,10 @@ variable "public_subnet_cidr" {
   }
   # default = ["10.0.3.0/24", "10.0.4.0/24"]
 }
+
+
+
+# VALUES FOR THE VARIABLES IN THE SECURITY GROUP MODULE
 
 variable "security_group" {
   default = {
@@ -58,4 +63,30 @@ variable "egress_rules" {
       sg_name     = "web-sg"
     }
   }
+}
+
+
+
+# VALUES FOR THE VARIABLES IN THE DATA MODULE
+
+variable "table_name" {
+  default = "my-table"
+}
+
+variable "attributes" {
+  default = [
+    { name = "ID", type = "S" }
+  ]
+}
+
+variable "hash_key" {
+  default = "ID"
+}
+
+variable "range_key" {
+  default = null
+}
+
+variable "billing_mode" {
+  default = "PAY_PER_REQUEST"
 }

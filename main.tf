@@ -13,3 +13,12 @@ module "security-group" {
   ingress_rules  = var.ingress_rules
   egress_rules   = var.egress_rules
 }
+
+module "data" {
+  source       = "./modules/data"
+  table_name   = var.table_name
+  hash_key     = var.hash_key
+  billing_mode = var.billing_mode
+  attributes   = var.attributes
+  range_key    = var.range_key
+}
